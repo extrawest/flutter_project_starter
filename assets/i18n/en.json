@@ -1,0 +1,22 @@
+{
+  "app_bar": {
+    "title": "Welcome to the home page"
+  },
+  "button": {
+    "cancel": "Cancel"
+  },
+  "language": {
+    "english": "English",
+    "ukrainian": "Ukrainian"
+  },
+  "theme": {
+    "change_theme": "Change theme"
+  },
+  "plural": {
+    "demo": {
+      "0": "Please start pushing the 'plus' button.",
+      "1": "You have pushed the button one time.",
+      "else": "You have pushed the button {{value}} times."
+    }
+  }
+}
