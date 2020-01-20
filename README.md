@@ -1,16 +1,31 @@
-# provider_starter_app
+# Flutter Provider Application Starter
 
-A new Flutter application.
 
-## Getting Started
+A new Flutter application starter bundled with Provider package for state management.
 
-This project is a starting point for a Flutter application.
+## Implemented Features
 
-A few resources to get you started if this is your first Flutter project:
+- Provider state sharing and state managing solution
+- Fully featured localization / internationalization (i18n):
+    - Pluralization support
+    - Static keys support with automatic string constants generation using the following command:
+        - `flutter pub run build_runner build --delete-conflicting-outputs`
+    - Supports both languageCode (en) and languageCode_countryCode (en_US) locale formats
+    - **(in progress...)** Automatically save & restore the selected locale with a simple implementation
+    - Full support for right-to-left locales
+    - Fallback locale support in case the system locale is unsupported
+    - Supports both inline or nested JSON      
+- NOSQL database integration (SEMBAST)
+- Light/Dark theme configuration
+- Dynamic Themes changing using Provider
+- Automatic font selection based on the thickness of the glyphs applied.
+- **(in progress...)** API client configuration
+- **(in progress...)** DEV/STAGE/PROD application configuration
+- Common widgets sharing and reusing example
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  
+---
+Created by @andriy.gulak
+[Extrawest.com](https://www.extrawest.com), 2020
+---
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
