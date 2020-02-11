@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_starter_app/localization/translate_preferences.dart';
 import 'package:provider_starter_app/providers/home_provider.dart';
 import 'package:provider_starter_app/providers/theme_provider.dart';
 import 'package:provider_starter_app/routes.dart';
 import 'package:provider_starter_app/screens/home_screen.dart';
 
 Future<void> main() async {
-  var delegate = await LocalizationDelegate.create(fallbackLocale: 'en', supportedLocales: [
-    'en',
-    'uk',
-  ]);
+  var delegate = await LocalizationDelegate.create(
+      fallbackLocale: 'en',
+      preferences: TranslatePreferences(),
+      supportedLocales: [
+        'en',
+        'uk',
+      ]);
 
   runApp(LocalizedApp(delegate, Application()));
 }
