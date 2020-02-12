@@ -11,7 +11,7 @@ A new Flutter application starter bundled with Provider package for state manage
     - Static keys support with automatic string constants generation using the following command:
         - `flutter pub run build_runner build --delete-conflicting-outputs`
     - Supports both languageCode (en) and languageCode_countryCode (en_US) locale formats
-    - **(in progress...)** Automatically save & restore the selected locale with a simple implementation
+    - Automatically save & restore the selected locale
     - Full support for right-to-left locales
     - Fallback locale support in case the system locale is unsupported
     - Supports both inline or nested JSON      

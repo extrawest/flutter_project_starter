@@ -14,22 +14,22 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> insertItem(Item item) async {
-    await homeDao.insertItem(item);
+    await homeDao.save(item);
   }
 
   Future<List<Item>> getAllItems() async {
-    return await homeDao.getAllItems();
+    return await homeDao.getAll();
   }
 
   Future updateItem(Item item) async {
-    homeDao.updateItem(item);
+    homeDao.update(item);
   }
 
   Future deleteItem(Item item) async {
-    await homeDao.deleteItem(item);
+    await homeDao.delete(item);
   }
 
   Future<void> insertAllItems(List<Item> itemsList) async {
-    itemsList.forEach((item) async => await insertItem(item));
+    await homeDao.insertAllItems(itemsList);
   }
 }
