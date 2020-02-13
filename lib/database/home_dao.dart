@@ -12,10 +12,6 @@ class HomeDao implements DaoApi<Item> {
 
   Future clearArtStore() async {}
 
-  Future<void> insertAllItems(List<Item> itemsList) async {
-    itemsList.forEach((item) async => await save(item));
-  }
-
   @override
   Future<void> delete(Item model) async {
     final finder = Finder(filter: Filter.byKey(model.id));
@@ -26,7 +22,7 @@ class HomeDao implements DaoApi<Item> {
   Future<Item> get(int id) async {
     final finder = Finder(filter: Filter.byKey(id));
     RecordSnapshot recordSnapshot = await _homeStore.findFirst(await _db, finder: finder);
-    return Item.fromJson(recordSnapshot.value);
+    return recordSnapshot != null ? Item.fromJson(recordSnapshot?.value) : null;
   }
 
   @override

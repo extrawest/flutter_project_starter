@@ -6,6 +6,7 @@ import 'package:sembast/sembast.dart';
 import 'package:sembast/sembast_io.dart';
 
 class AppDatabase {
+  static bool isTestingMode = false;
   static final AppDatabase _singleton = AppDatabase._();
 
   static AppDatabase get instance => _singleton;
@@ -14,19 +15,24 @@ class AppDatabase {
 
   AppDatabase._();
 
+  final testApplicationDatabase = "test_database.db";
   final applicationDatabase = "app_database.db";
 
   Future<Database> get database async {
     if (_dbOpenCompleter == null) {
       _dbOpenCompleter = Completer();
-      await _openDatabase();
+      if (isTestingMode) {
+        await _openDatabase(testApplicationDatabase);
+      } else {
+        await _openDatabase(applicationDatabase);
+      }
     }
     return _dbOpenCompleter.future;
   }
 
-  Future _openDatabase() async {
+  Future _openDatabase(String databaseName) async {
     final appDocumentDir = await getApplicationDocumentsDirectory();
-    final dbPath = join(appDocumentDir.path, applicationDatabase);
+    final dbPath = join(appDocumentDir.path, databaseName);
 
     final database = await databaseFactoryIo.openDatabase(dbPath);
     _dbOpenCompleter.complete(database);

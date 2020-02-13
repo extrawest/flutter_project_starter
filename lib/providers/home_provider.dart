@@ -28,8 +28,4 @@ class HomeProvider extends ChangeNotifier {
   Future deleteItem(Item item) async {
     await homeDao.delete(item);
   }
-
-  Future<void> insertAllItems(List<Item> itemsList) async {
-    await homeDao.insertAllItems(itemsList);
-  }
 }
