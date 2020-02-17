@@ -20,7 +20,7 @@ A new Flutter application starter bundled with Provider package for state manage
 - Dynamic Themes changing using Provider
 - Automatic font selection based on the thickness of the glyphs applied.
 - **(in progress...)** API client configuration
-- **(in progress...)** DEV/STAGE/PROD application configuration
+- DEV/STAGE/PROD application configuration
 - Common widgets sharing and reusing example
 
   
