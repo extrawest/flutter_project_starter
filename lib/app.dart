@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_starter_app/flavor_banner.dart';
 import 'package:provider_starter_app/providers/home_provider.dart';
 import 'package:provider_starter_app/providers/theme_provider.dart';
 import 'package:provider_starter_app/routes.dart';
@@ -28,7 +29,7 @@ class _ApplicationState extends State<Application> {
           return MaterialApp(
             title: "Flutter Provider Starter",
             theme: Provider.of<ThemeProvider>(context).getThemeData,
-            home: HomeScreen(),
+            home: FlavorBanner(child: HomeScreen()),
             localizationsDelegates: [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
