@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color redLight = const Color(0xFFE44125);
 const Color blackShade = const Color(0xFF222222);
+const Color cherryRed = const Color(0xffe8001d);
 
 class TextStyles {
   static const notifierTextLabel = const TextStyle(
