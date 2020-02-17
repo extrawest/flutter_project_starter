@@ -3,6 +3,8 @@ import 'package:flutter_translate/flutter_translate.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_starter_app/common/app_bar_config.dart';
 import 'package:provider_starter_app/localization/keys.dart';
+import 'package:provider_starter_app/network/response.dart';
+import 'package:provider_starter_app/providers/posts_provider.dart';
 import 'package:provider_starter_app/providers/theme_provider.dart';
 import 'package:provider_starter_app/theme/theme.dart';
 
@@ -39,10 +41,15 @@ class _HomeScreenState extends State<HomeScreen> {
             textAlign: TextAlign.center,
             style: TextStyles.notifierTextLabel.copyWith(color: Theme.of(context).accentColor),
           ),
+          Text(
+            _getText(),
+            textAlign: TextAlign.center,
+            style: TextStyles.notifierTextLabel.copyWith(color: Theme.of(context).accentColor),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: Provider.of<PostsProvider>(context).fetchPosts,
         child: Icon(Icons.add),
       ),
     );
@@ -71,5 +78,20 @@ class _HomeScreenState extends State<HomeScreen> {
         changeLocale(context, languageCode);
       },
     );
+  }
+
+  String _getText() {
+    var postsListResponse = Provider.of<PostsProvider>(context, listen: false).postsListResponse;
+    switch(postsListResponse.status) {
+      case Status.LOADING:
+        return postsListResponse.message;
+      case Status.COMPLETED:
+        return "${postsListResponse.data.length}";
+      case Status.ERROR:
+        return postsListResponse.message;
+      case Status.NONE:
+        return "";
+    }
+
   }
 }

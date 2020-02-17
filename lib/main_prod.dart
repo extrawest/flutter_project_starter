@@ -11,7 +11,7 @@ void main() async {
   var configuredApp = AppConfig(
     appName: 'Flutter Provider Application Starter',
     flavorName: 'prod',
-    apiUrl: 'https://prod.example.com/api',
+    apiUrl: 'https://prod.jsonplaceholder.typicode.com',
     child: Application(),
   );
 

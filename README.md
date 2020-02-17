@@ -19,7 +19,7 @@ A new Flutter application starter bundled with Provider package for state manage
 - Light/Dark theme configuration
 - Dynamic Themes changing using Provider
 - Automatic font selection based on the thickness of the glyphs applied.
-- **(in progress...)** API client configuration
+- API client configuration
 - DEV/STAGE/PROD application configuration
 - Common widgets sharing and reusing example
 
