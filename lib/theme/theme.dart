@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 const Color redLight = const Color(0xFFE44125);
 const Color blackShade = const Color(0xFF222222);
 const Color cherryRed = const Color(0xffe8001d);
+const Color greyShadeLight = const Color(0xFFE5E5E5);
 
 class TextStyles {
   static const notifierTextLabel = const TextStyle(
@@ -17,7 +18,7 @@ class ApplicationTheme {
     primarySwatch: Colors.grey,
     primaryColor: Colors.black,
     brightness: Brightness.dark,
-    backgroundColor: const Color(0xFF212121),
+    backgroundColor: blackShade,
     accentColor: Colors.white,
     accentIconTheme: IconThemeData(color: Colors.black),
     dividerColor: Colors.black12,
@@ -28,7 +29,7 @@ class ApplicationTheme {
     primarySwatch: Colors.grey,
     primaryColor: Colors.white,
     brightness: Brightness.light,
-    backgroundColor: const Color(0xFFE5E5E5),
+    backgroundColor: greyShadeLight,
     accentColor: Colors.black,
     accentIconTheme: IconThemeData(color: Colors.white),
     dividerColor: Colors.white54,
