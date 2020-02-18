@@ -3,13 +3,13 @@ class Response<T> {
   T data;
   String message;
 
-  Response.loading(this.message) : status = Status.LOADING;
+  Response.loading(this.message) : status = Status.loading;
 
-  Response.completed(this.data) : status = Status.COMPLETED;
+  Response.completed(this.data) : status = Status.completed;
 
-  Response.error(this.message) : status = Status.ERROR;
+  Response.error(this.message) : status = Status.error;
 
-  Response.none() : status = Status.NONE;
+  Response.none() : status = Status.none;
 
   @override
   String toString() {
@@ -17,4 +17,4 @@ class Response<T> {
   }
 }
 
-enum Status { LOADING, COMPLETED, ERROR, NONE }
+enum Status { loading, completed, error, none }

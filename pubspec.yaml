@@ -40,6 +40,7 @@ dev_dependencies:
     sdk: flutter
   flutter_translate_gen: ^1.2.4
   build_runner: ^1.7.4
+  lint: ^1.1.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

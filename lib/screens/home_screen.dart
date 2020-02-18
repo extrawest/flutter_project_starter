@@ -9,7 +9,7 @@ import 'package:provider_starter_app/providers/theme_provider.dart';
 import 'package:provider_starter_app/theme/theme.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
+  const HomeScreen({Key key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final postsProvider = Provider.of<PostsProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBarConfig.defaultAppBar(context, translate(Keys.App_Bar_Title)),
       body: Column(
@@ -36,27 +37,33 @@ class _HomeScreenState extends State<HomeScreen> {
             _buildChangeLangButton(translate(Keys.Language_Ukrainian), 'uk'),
           ]),
           _buildChangeThemeTile(),
+          RaisedButton(
+            onPressed: () {
+              postsProvider.fetchPosts();
+            },
+            child: Text(translate(Keys.Fetch_Posts)),
+          ),
           Text(
             translatePlural(Keys.Plural_Demo, _counter),
             textAlign: TextAlign.center,
             style: TextStyles.notifierTextLabel.copyWith(color: Theme.of(context).accentColor),
           ),
           Text(
-            _getText(),
+            _getText(postsProvider),
             textAlign: TextAlign.center,
             style: TextStyles.notifierTextLabel.copyWith(color: Theme.of(context).accentColor),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: Provider.of<PostsProvider>(context).fetchPosts,
+        onPressed: _incrementCounter,
         child: Icon(Icons.add),
       ),
     );
   }
 
   ListTile _buildChangeThemeTile() {
-    var themeProvider = Provider.of<ThemeProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return ListTile(
       leading: Text(
         translate(Keys.Theme_Change_Theme),
@@ -73,25 +80,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
   RaisedButton _buildChangeLangButton(String languageName, String languageCode) {
     return RaisedButton(
-      child: Text(languageName),
       onPressed: () {
         changeLocale(context, languageCode);
       },
+      child: Text(languageName),
     );
   }
 
-  String _getText() {
-    var postsListResponse = Provider.of<PostsProvider>(context, listen: false).postsListResponse;
-    switch(postsListResponse.status) {
-      case Status.LOADING:
+  String _getText(PostsProvider postsProvider) {
+    final postsListResponse = postsProvider.postsListResponse;
+    switch (postsListResponse.status) {
+      case Status.loading:
         return postsListResponse.message;
-      case Status.COMPLETED:
+      case Status.completed:
         return "${postsListResponse.data.length}";
-      case Status.ERROR:
+      case Status.error:
         return postsListResponse.message;
-      case Status.NONE:
+      case Status.none:
+      default:
         return "";
     }
-
   }
 }

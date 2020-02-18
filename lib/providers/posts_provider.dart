@@ -12,11 +12,11 @@ class PostsProvider extends ChangeNotifier {
     _apiServiceRepository = ApiServiceRepository(baseApiUrl);
   }
 
-  void fetchPosts() async {
+  Future<void> fetchPosts() async {
     postsListResponse = Response<List<Post>>.loading("Fetching posts...");
     notifyListeners();
     try {
-      List<Post> postList = await _apiServiceRepository.fetchPostsData();
+      final postList = await _apiServiceRepository.fetchPostsData();
       postsListResponse = Response.completed(postList);
       notifyListeners();
     } catch (e) {
@@ -26,11 +26,11 @@ class PostsProvider extends ChangeNotifier {
     }
   }
 
-  void publishPost(String title, String body, int userId) async {
+  Future<void> publishPost(String title, String body, int userId) async {
     publishPostResponse = Response.loading("Publishing post...");
     notifyListeners();
     try {
-      List<Post> postList = await _apiServiceRepository.fetchPostsData();
+      final postList = await _apiServiceRepository.fetchPostsData();
       publishPostResponse = Response.completed(postList);
       notifyListeners();
     } catch (e) {

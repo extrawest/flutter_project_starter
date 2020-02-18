@@ -12,7 +12,7 @@ class TranslatePreferences implements ITranslatePreferences {
 
     if (!preferences.containsKey(_selectedLocaleKey)) return null;
 
-    var locale = preferences.getString(_selectedLocaleKey);
+    final locale = preferences.getString(_selectedLocaleKey);
 
     return localeFromString(locale);
   }

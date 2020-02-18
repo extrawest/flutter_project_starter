@@ -7,7 +7,7 @@ class ThemeProvider extends ChangeNotifier {
   ThemeProvider({this.isLightTheme = true});
 
   ThemeData get getThemeData =>
-      isLightTheme ? ApplicationTheme.lightTheme : ApplicationTheme.darkTheme;
+      isLightTheme ? lightTheme : darkTheme;
 
   set setThemeData(bool val) {
     if (val) {

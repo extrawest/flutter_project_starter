@@ -1,0 +1,15 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    parameter_assignments: true
+    argument_type_not_assignable: true
+
+analyzer:
+  errors:
+    missing_required_param: error
+    parameter_assignments: error
+    missing_return: error
+
+    argument_type_not_assignable: warning
+    return_of_invalid_type: warning

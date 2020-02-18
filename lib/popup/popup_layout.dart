@@ -10,7 +10,7 @@ class PopupLayout extends ModalRoute {
   final Widget child;
 
   @override
-  Duration get transitionDuration => Duration(milliseconds: 300);
+  Duration get transitionDuration => const Duration(milliseconds: 300);
 
   @override
   bool get opaque => false;
@@ -19,8 +19,7 @@ class PopupLayout extends ModalRoute {
   bool get barrierDismissible => false;
 
   @override
-  Color get barrierColor =>
-      bgColor == null ? Colors.black.withOpacity(0.5) : bgColor;
+  Color get barrierColor => bgColor ?? Colors.black.withOpacity(0.5);
 
   @override
   String get barrierLabel => null;
@@ -29,21 +28,15 @@ class PopupLayout extends ModalRoute {
   bool get maintainState => false;
 
   PopupLayout(
-      {Key key,
-      this.bgColor,
-      @required this.child,
-      this.top,
-      this.bottom,
-      this.left,
-      this.right});
+      {Key key, this.bgColor, @required this.child, this.top, this.bottom, this.left, this.right});
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
-    if (top == null) this.top = 10;
-    if (bottom == null) this.bottom = 20;
-    if (left == null) this.left = 20;
-    if (right == null) this.right = 20;
+  Widget buildPage(
+      BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
+    top ??= 10;
+    bottom ??= 20;
+    left ??= 20;
+    right ??= 20;
 
     return GestureDetector(
       onTap: () {
@@ -61,11 +54,8 @@ class PopupLayout extends ModalRoute {
 
   Widget _buildOverlayContent(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-          bottom: this.bottom,
-          left: this.left,
-          right: this.right,
-          top: this.top),
+      margin:
+          EdgeInsets.only(bottom: bottom, left: left, right: right, top: top),
       child: child,
     );
   }

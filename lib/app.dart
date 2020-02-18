@@ -19,8 +19,8 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
-    var localizationDelegate = LocalizedApp.of(context).delegate;
-    var appConfig = AppConfig.of(context);
+    final localizationDelegate = LocalizedApp.of(context).delegate;
+    final appConfig = AppConfig.of(context);
     return LocalizationProvider(
       state: LocalizationProvider.of(context).state,
       child: MultiProvider(

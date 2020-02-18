@@ -4,11 +4,11 @@ import 'package:provider_starter_app/models/item_model.dart';
 import 'package:sembast/sembast.dart';
 
 class HomeDao implements DaoApi<Item> {
-  static const String HOME_STORE = 'home_store';
+  static const String homeStore = 'home_store';
 
-  final _homeStore = intMapStoreFactory.store(HOME_STORE);
+  final _homeStore = intMapStoreFactory.store(homeStore);
 
-  Future<Database> get _db async => await AppDatabase.instance.database;
+  Future<Database> get _db async => AppDatabase.instance.database;
 
   Future clearArtStore() async {}
 
@@ -21,8 +21,8 @@ class HomeDao implements DaoApi<Item> {
   @override
   Future<Item> get(int id) async {
     final finder = Finder(filter: Filter.byKey(id));
-    RecordSnapshot recordSnapshot = await _homeStore.findFirst(await _db, finder: finder);
-    return recordSnapshot != null ? Item.fromJson(recordSnapshot?.value) : null;
+    final RecordSnapshot recordSnapshot = await _homeStore.findFirst(await _db, finder: finder);
+    return recordSnapshot != null ? Item.fromJson(recordSnapshot?.value as Map<String, dynamic>) : null;
   }
 
   @override

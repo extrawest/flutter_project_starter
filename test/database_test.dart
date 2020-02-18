@@ -25,7 +25,7 @@ void defineTests() {
     });
 
     test('save/get', () async {
-      var item = Item(id: 0, name: "itemName");
+      final item = Item(id: 0, name: "itemName");
       await homeDao.save(item);
       expect(await homeDao.get(1), isNull);
       expect(await homeDao.get(0), isNotNull);
@@ -34,13 +34,13 @@ void defineTests() {
     });
 
     test('delete', () async {
-      var item = Item(id: 0, name: "itemName");
+      final item = Item(id: 0, name: "itemName");
       await homeDao.delete(item);
       expect(await homeDao.get(0), isNull);
     });
 
     test('save/update', () async {
-      var item = Item(id: 0, name: "itemName");
+      final item = Item(id: 0, name: "itemName");
       await homeDao.save(item);
       expect(await homeDao.get(0), isNotNull);
       await homeDao.update(Item(id: 0, name: "itemNameUpdated"));
@@ -49,21 +49,21 @@ void defineTests() {
     });
 
     test('getAll', () async {
-      var item = Item(id: 0, name: "itemName");
-      var item1 = Item(id: 1, name: "itemName1");
-      var item2 = Item(id: 2, name: "itemName2");
+      final item = Item(id: 0, name: "itemName");
+      final item1 = Item(id: 1, name: "itemName1");
+      final item2 = Item(id: 2, name: "itemName2");
       await homeDao.save(item);
       await homeDao.save(item1);
       await homeDao.save(item2);
       expect(await homeDao.get(0), isNotNull);
-      List<Item> itemsList = await homeDao.getAll();
+      final List<Item> itemsList = await homeDao.getAll();
       expect(itemsList, isNotEmpty);
       expect(itemsList.length, 3);
       expect(itemsList[0].id, item.id);
     });
 
     test('clearStore', () async {
-      var item = Item(id: 10, name: "itemName");
+      final item = Item(id: 10, name: "itemName");
       await homeDao.save(item);
       expect(await homeDao.get(10), isNotNull);
       await homeDao.clearStore();

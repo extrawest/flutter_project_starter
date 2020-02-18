@@ -12,10 +12,10 @@ class Post {
   });
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
-        userId: json["userId"] == null ? null : json["userId"],
-        id: json["id"] == null ? null : json["id"],
-        title: json["title"] == null ? null : json["title"],
-        body: json["body"] == null ? null : json["body"],
+        userId: json["userId"] == null ? null : json["userId"] as int,
+        id: json["id"] == null ? null : json["id"] as int,
+        title: json["title"] == null ? null : json["title"] as String,
+        body: json["body"] == null ? null : json["body"] as String,
       );
 
   Map<String, dynamic> toJson() => {

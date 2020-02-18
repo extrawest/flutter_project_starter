@@ -12,7 +12,7 @@ import 'package:provider_starter_app/theme/theme.dart';
 class FlavorBanner extends StatefulWidget {
   final Widget child;
 
-  FlavorBanner({@required this.child});
+  const FlavorBanner({@required this.child});
 
   @override
   _FlavorBannerState createState() => _FlavorBannerState();
@@ -29,9 +29,9 @@ class _FlavorBannerState extends State<FlavorBanner> {
     super.initState();
 
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
-      String packageName = packageInfo.packageName;
-      String version = packageInfo.version;
-      String buildNumber = packageInfo.buildNumber;
+      final String packageName = packageInfo.packageName;
+      final String version = packageInfo.version;
+      final String buildNumber = packageInfo.buildNumber;
       setState(() {
         this.packageName = packageName;
         this.version = version;
@@ -40,18 +40,18 @@ class _FlavorBannerState extends State<FlavorBanner> {
     });
 
     try {
-      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+      final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
       if (Platform.isAndroid) {
         deviceInfo.androidInfo.then((AndroidDeviceInfo androidInfo) {
           setState(() {
-            this.phoneModel = androidInfo.model;
+            phoneModel = androidInfo.model;
           });
         });
       }
       if (Platform.isIOS) {
         deviceInfo?.iosInfo?.then((IosDeviceInfo iosInfo) {
           setState(() {
-            this.phoneModel = iosInfo?.utsname?.machine;
+            phoneModel = iosInfo?.utsname?.machine;
           });
         });
       }
@@ -63,7 +63,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
 
   @override
   Widget build(BuildContext context) {
-    var config = AppConfig.of(context);
+    final config = AppConfig.of(context);
     return config.flavorName == 'stage' || config.flavorName == 'dev'
         ? Stack(
       children: <Widget>[widget.child, _buildBanner(context, config)],
@@ -72,7 +72,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
   }
 
   Widget _buildBanner(BuildContext context, AppConfig config) {
-    var config = AppConfig.of(context);
+    final config = AppConfig.of(context);
     return Positioned(
       bottom: -10,
       left: -10,
@@ -81,6 +81,13 @@ class _FlavorBannerState extends State<FlavorBanner> {
         height: 30,
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
+          onTap: () {
+            PopUp.showDefault(
+              context,
+              _getContent(config),
+              "App is running in `${config.flavorName}` mode",
+            );
+          },
           child: CustomPaint(
             painter: BannerPainter(
                 message: getBannerMessage(config),
@@ -89,13 +96,6 @@ class _FlavorBannerState extends State<FlavorBanner> {
                 location: BannerLocation.bottomStart,
                 color: cherryRed),
           ),
-          onTap: () {
-            PopUp.showDefault(
-              context,
-              _getContent(config),
-              "App is running in `${config.flavorName}` mode",
-            );
-          },
         ),
       ),
     );
@@ -115,55 +115,49 @@ class _FlavorBannerState extends State<FlavorBanner> {
       child: Column(
         children: <Widget>[
           _buildTile('Flavor: ', '${config.flavorName}'),
-          _buildTile('Phone Model: ', '${this.phoneModel}'),
+          _buildTile('Phone Model: ', '${phoneModel}'),
           _buildTile('App name: ', '${config.appName}'),
           _buildTile('API URLs: ', '${config.apiUrl}'),
-          _buildTile('PackageName: ', this.packageName),
-          _buildTile('Version: ', this.version),
-          _buildTile('BuildNumber: ', this.buildNumber),
+          _buildTile('PackageName: ', packageName),
+          _buildTile('Version: ', version),
+          _buildTile('BuildNumber: ', buildNumber),
           RaisedButton(
-            child: Text("Copy to clipboard"),
             onPressed: () {
               Clipboard.setData(ClipboardData(
                   text: '${
-                      buildLine('Phone Model', this.phoneModel) +
+                      buildLine('Phone Model', phoneModel) +
                           buildLine('Flavor', config.flavorName) +
                           buildLine('App name', config.appName) +
                           buildLine('API URL', config.apiUrl) +
-                          buildLine('PackageName', this.packageName) +
-                          buildLine('Version', this.version) +
-                          buildLine('BuildNumber', this.buildNumber)
+                          buildLine('PackageName', packageName) +
+                          buildLine('Version', version) +
+                          buildLine('BuildNumber', buildNumber)
                   }'
                 ),
               );
             },
+            child: const Text("Copy to clipboard"),
           ),
         ],
       ),
     );
   }
 
-  static buildLine(String key, String value) {
-    return '${key}: ${value}\n';
+  static String buildLine(String key, String value) {
+    return '$key: $value\n';
   }
 
   Widget _buildTile(String key, String value) {
-    if (key == null) {
-      key = "this value is null";
-    }
-    if (value == null) {
-      value = "this value is null";
-    }
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            key,
+            key ?? "this value is null",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          Flexible(child: Text(value, maxLines: 5, overflow: TextOverflow.ellipsis,))
+          Flexible(child: Text(value ?? "this value is null", maxLines: 5, overflow: TextOverflow.ellipsis,))
         ],
       ),
     );

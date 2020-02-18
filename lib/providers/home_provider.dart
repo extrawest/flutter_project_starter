@@ -18,7 +18,7 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<List<Item>> getAllItems() async {
-    return await homeDao.getAll();
+    return homeDao.getAll();
   }
 
   Future updateItem(Item item) async {

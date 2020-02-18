@@ -9,15 +9,15 @@ import 'package:provider_starter_app/network/exception.dart';
 class ApiService {
   final String baseApiUrl;
 
-  static const String POSTS_PATH = '/posts';
+  static const String postsPath = '/posts';
 
   Map<String, String> headers = {"Content-type": "application/json"};
 
   ApiService({@required this.baseApiUrl});
 
   Future<dynamic> get(String url, {Map<String, String> addHeaders}) async {
-    var responseJson;
-    Map<String, String> updatedHeaders = {};
+    dynamic responseJson;
+    final Map<String, String> updatedHeaders = {};
 
     if (addHeaders != null) {
       updatedHeaders.addAll(headers);
@@ -34,8 +34,8 @@ class ApiService {
   }
 
   Future<dynamic> post(String url, String jsonBody, {Map<String, String> addHeaders}) async {
-    var responseJson;
-    Map<String, String> updatedHeaders = {};
+    dynamic responseJson;
+    final Map<String, String> updatedHeaders = {};
 
     if (addHeaders != null) {
       updatedHeaders.addAll(headers);
@@ -54,7 +54,7 @@ class ApiService {
   dynamic _response(http.Response response) {
     switch (response.statusCode) {
       case 200:
-        var responseJson = json.decode(response.body.toString());
+        final responseJson = json.decode(response.body.toString());
         print(responseJson);
         return responseJson;
       case 400:

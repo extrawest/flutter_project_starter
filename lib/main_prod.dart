@@ -5,17 +5,17 @@ import 'package:provider_starter_app/app.dart';
 import 'package:provider_starter_app/app_config.dart';
 import 'package:provider_starter_app/localization/translate_preferences.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  var configuredApp = AppConfig(
+  final configuredApp = AppConfig(
     appName: 'Flutter Provider Application Starter',
     flavorName: 'prod',
     apiUrl: 'https://prod.jsonplaceholder.typicode.com',
     child: Application(),
   );
 
-  var delegate = await LocalizationDelegate.create(
+  final delegate = await LocalizationDelegate.create(
       fallbackLocale: 'en',
       preferences: TranslatePreferences(),
       supportedLocales: [

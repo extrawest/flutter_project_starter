@@ -8,8 +8,8 @@ class Item {
   });
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
-        name: json["name"] == null ? null : json["name"],
-        id: json["id"] == null ? null : json["id"],
+        name: json["name"] as String,
+        id: json["id"] as int,
       );
 
   Map<String, dynamic> toJson() => {

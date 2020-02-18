@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 class AppConfig extends InheritedWidget {
-  AppConfig({
+  const AppConfig({
     @required this.appName,
     @required this.flavorName,
     @required this.apiUrl,

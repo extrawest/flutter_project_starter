@@ -18,4 +18,6 @@ class Keys {
   static const String Theme_Change_Theme = 'theme.change_theme';
 
   static const String Plural_Demo = 'plural.demo';
+
+  static const String Fetch_Posts = 'fetch_posts';
 }

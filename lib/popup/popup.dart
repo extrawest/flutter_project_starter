@@ -5,7 +5,7 @@ import 'package:provider_starter_app/popup/popup_content.dart';
 import 'package:provider_starter_app/popup/popup_layout.dart';
 
 class PopUp {
-  static showDefault(BuildContext context, Widget widget, String title) {
+  static void showDefault(BuildContext context, Widget widget, String title) {
     Navigator.push(
       context,
       PopupLayout(
@@ -20,7 +20,7 @@ class PopUp {
               backgroundColor: Theme.of(context).backgroundColor,
               appBar: AppBar(
                 elevation: 0,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(8),
                   ),
@@ -36,7 +36,7 @@ class PopUp {
                         Navigator.of(context).pop();
                       },
                       child: Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Icon(
                           Icons.close,
                           color: Colors.grey,

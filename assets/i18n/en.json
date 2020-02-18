@@ -18,5 +18,6 @@
       "1": "You have pushed the button one time.",
       "else": "You have pushed the button {{value}} times."
     }
-  }
+  },
+  "fetch_posts": "Fetch posts"
 }

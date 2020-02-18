@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 class PopupContent extends StatefulWidget {
   final Widget content;
 
-  PopupContent({
+  const PopupContent({
     Key key,
     this.content,
   }) : super(key: key);
 
+  @override
   _PopupContentState createState() => _PopupContentState();
 }
 
@@ -25,7 +26,7 @@ class _PopupContentState extends State<PopupContent> {
         height: size.height,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: widget.content);
   }
