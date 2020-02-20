@@ -23,7 +23,7 @@ Future<void> main() async {
         'uk',
       ]);
 
-  SystemChrome.setPreferredOrientations([
+  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);

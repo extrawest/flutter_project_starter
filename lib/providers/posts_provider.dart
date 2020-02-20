@@ -30,7 +30,7 @@ class PostsProvider extends ChangeNotifier {
     publishPostResponse = Response.loading("Publishing post...");
     notifyListeners();
     try {
-      final postList = await _apiServiceRepository.fetchPostsData();
+      final postList = await _apiServiceRepository.publishPostData(body);
       publishPostResponse = Response.completed(postList);
       notifyListeners();
     } catch (e) {

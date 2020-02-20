@@ -29,9 +29,9 @@ class _FlavorBannerState extends State<FlavorBanner> {
     super.initState();
 
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
-      final String packageName = packageInfo.packageName;
-      final String version = packageInfo.version;
-      final String buildNumber = packageInfo.buildNumber;
+      final packageName = packageInfo.packageName;
+      final version = packageInfo.version;
+      final buildNumber = packageInfo.buildNumber;
       setState(() {
         this.packageName = packageName;
         this.version = version;
@@ -40,6 +40,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
     });
 
     try {
+      // ignore: omit_local_variable_types
       final DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
       if (Platform.isAndroid) {
         deviceInfo.androidInfo.then((AndroidDeviceInfo androidInfo) {
@@ -55,8 +56,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
           });
         });
       }
-    }
-    catch (e) {
+    } catch (e) {
       print('platform error $e');
     }
   }
@@ -66,8 +66,8 @@ class _FlavorBannerState extends State<FlavorBanner> {
     final config = AppConfig.of(context);
     return config.flavorName == 'stage' || config.flavorName == 'dev'
         ? Stack(
-      children: <Widget>[widget.child, _buildBanner(context, config)],
-    )
+            children: <Widget>[widget.child, _buildBanner(context, config)],
+          )
         : widget.child;
   }
 
@@ -85,7 +85,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
             PopUp.showDefault(
               context,
               _getContent(config),
-              "App is running in `${config.flavorName}` mode",
+              'App is running in `${config.flavorName}` mode',
             );
           },
           child: CustomPaint(
@@ -107,7 +107,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
     } else if (config.flavorName == 'dev') {
       return "DEV";
     }
-    return "";
+    return '';
   }
 
   Widget _getContent(AppConfig config) {
@@ -123,17 +123,10 @@ class _FlavorBannerState extends State<FlavorBanner> {
           _buildTile('BuildNumber: ', buildNumber),
           RaisedButton(
             onPressed: () {
-              Clipboard.setData(ClipboardData(
-                  text: '${
-                      buildLine('Phone Model', phoneModel) +
-                          buildLine('Flavor', config.flavorName) +
-                          buildLine('App name', config.appName) +
-                          buildLine('API URL', config.apiUrl) +
-                          buildLine('PackageName', packageName) +
-                          buildLine('Version', version) +
-                          buildLine('BuildNumber', buildNumber)
-                  }'
-                ),
+              Clipboard.setData(
+                ClipboardData(
+                    text:
+                        '${buildLine('Phone Model', phoneModel) + buildLine('Flavor', config.flavorName) + buildLine('App name', config.appName) + buildLine('API URL', config.apiUrl) + buildLine('PackageName', packageName) + buildLine('Version', version) + buildLine('BuildNumber', buildNumber)}'),
               );
             },
             child: const Text("Copy to clipboard"),
@@ -157,7 +150,12 @@ class _FlavorBannerState extends State<FlavorBanner> {
             key ?? "this value is null",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          Flexible(child: Text(value ?? "this value is null", maxLines: 5, overflow: TextOverflow.ellipsis,))
+          Flexible(
+              child: Text(
+            value ?? "this value is null",
+            maxLines: 5,
+            overflow: TextOverflow.ellipsis,
+          ))
         ],
       ),
     );

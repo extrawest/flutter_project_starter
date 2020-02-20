@@ -22,7 +22,7 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future updateItem(Item item) async {
-    homeDao.update(item);
+    await homeDao.update(item);
   }
 
   Future deleteItem(Item item) async {

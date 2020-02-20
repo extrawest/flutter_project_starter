@@ -9,7 +9,7 @@ import 'package:provider_starter_app/providers/theme_provider.dart';
 import 'package:provider_starter_app/theme/theme.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key key}) : super(key: key);
+  HomeScreen({Key key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final postsProvider = Provider.of<PostsProvider>(context, listen: false);
+    final postsProvider = Provider.of<PostsProvider>(context);
     return Scaffold(
       appBar: AppBarConfig.defaultAppBar(context, translate(Keys.App_Bar_Title)),
       body: Column(

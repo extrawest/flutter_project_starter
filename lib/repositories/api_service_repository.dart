@@ -10,9 +10,7 @@ class ApiServiceRepository {
 
   Future<List<Post>> fetchPostsData() async {
     final response = await _apiService.get(ApiService.postsPath);
-    return response
-        .map((postData) => Post.fromJson(postData as Map<String, dynamic>))
-        .toList();
+    return response.map((Map<String, dynamic> postData) => Post.fromJson(postData)).toList();
   }
 
   Future<Post> publishPostData(String jsonBody) async {
