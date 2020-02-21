@@ -21,6 +21,7 @@ A new Flutter application starter bundled with Provider package for state manage
 - Automatic font selection based on the thickness of the glyphs applied.
 - API client configuration
 - DEV/STAGE/PROD application configuration
+- Static analysis tool integration (pedantic linter package)
 - Common widgets sharing and reusing example
 
   
