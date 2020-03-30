@@ -42,7 +42,7 @@ In order to use this starter in your project, do the following step-by-step:
 
 ## 2. [Change the app name, package name and bundleId (Android & iOS)](https://gitlab.extrawest.com/internal/knowledge-base/-/blob/master/mobile-dev/flutter/tips_and_tricks.md#change-the-app-name-package-name-and-bundleid-android-ios)
 
-## 3. Implemented Features
+## Implemented Features
 
 - Provider state sharing and state managing solution
 - Fully featured localization / internationalization (i18n):
