@@ -4,7 +4,7 @@
 A new Flutter application starter bundled with Provider package for state management.
 
 
-## Getting started
+## 1. Getting started
 In order to use this starter in your project, do the following step-by-step:
 
 **1. Clone this repo to your folder:**
@@ -40,8 +40,9 @@ In order to use this starter in your project, do the following step-by-step:
 `git push -u origin master`
 
 
+## 2. [Change the app name, package name and bundleId (Android & iOS)](https://gitlab.extrawest.com/internal/knowledge-base/-/blob/master/mobile-dev/flutter/tips_and_tricks.md#change-the-app-name-package-name-and-bundleid-android-ios)
 
-## Implemented Features
+## 3. Implemented Features
 
 - Provider state sharing and state managing solution
 - Fully featured localization / internationalization (i18n):
