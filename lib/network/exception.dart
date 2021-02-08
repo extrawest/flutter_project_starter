@@ -6,22 +6,22 @@ class APIException implements Exception {
 
   @override
   String toString() {
-    return "$_prefix$_message";
+    return '$_prefix$_message';
   }
 }
 
 class FetchDataException extends APIException {
-  FetchDataException([String message]) : super(message, "Error During Communication: ");
+  FetchDataException([String message]) : super(message, 'Error During Communication: ');
 }
 
 class BadRequestException extends APIException {
-  BadRequestException([String message]) : super(message, "Invalid Request: ");
+  BadRequestException([String message]) : super(message, 'Invalid Request: ');
 }
 
 class UnauthorisedException extends APIException {
-  UnauthorisedException([String message]) : super(message, "Unauthorised: ");
+  UnauthorisedException([String message]) : super(message, 'Unauthorised: ');
 }
 
 class InvalidInputException extends APIException {
-  InvalidInputException([String message]) : super(message, "Invalid Input: ");
+  InvalidInputException([String message]) : super(message, 'Invalid Input: ');
 }

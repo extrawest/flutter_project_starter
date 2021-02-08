@@ -1,19 +1,19 @@
-class Response<T> {
+class NetworkResponse<T> {
   Status status;
   T data;
   String message;
 
-  Response.loading(this.message) : status = Status.loading;
+  NetworkResponse.loading(this.message) : status = Status.loading;
 
-  Response.completed(this.data) : status = Status.completed;
+  NetworkResponse.completed(this.data) : status = Status.completed;
 
-  Response.error(this.message) : status = Status.error;
+  NetworkResponse.error(this.message) : status = Status.error;
 
-  Response.none() : status = Status.none;
+  NetworkResponse.none() : status = Status.none;
 
   @override
   String toString() {
-    return "Status : $status \n Message : $message \n Data : $data";
+    return 'Status : $status \n Message : $message \n Data : $data';
   }
 }
 

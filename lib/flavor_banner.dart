@@ -8,6 +8,7 @@ import 'package:package_info/package_info.dart';
 import 'package:provider_starter_app/app_config.dart';
 import 'package:provider_starter_app/popup/popup.dart';
 import 'package:provider_starter_app/theme/theme.dart';
+import 'package:provider_starter_app/utils/application_utils.dart';
 
 class FlavorBanner extends StatefulWidget {
   final Widget child;
@@ -23,6 +24,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
   String version;
   String buildNumber;
   String phoneModel;
+  String deviceUdId;
 
   @override
   void initState() {
@@ -36,6 +38,12 @@ class _FlavorBannerState extends State<FlavorBanner> {
         this.packageName = packageName;
         this.version = version;
         this.buildNumber = buildNumber;
+      });
+
+      ApplicationUtils.getDeviceUdId().then((String udid) {
+        setState(() {
+          deviceUdId = udid;
+        });
       });
     });
 
@@ -103,9 +111,9 @@ class _FlavorBannerState extends State<FlavorBanner> {
 
   String getBannerMessage(AppConfig config) {
     if (config.flavorName == 'staging') {
-      return "STAGE";
+      return 'STAGE';
     } else if (config.flavorName == 'dev') {
-      return "DEV";
+      return 'DEV';
     }
     return '';
   }
@@ -121,6 +129,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
           _buildTile('PackageName: ', packageName),
           _buildTile('Version: ', version),
           _buildTile('BuildNumber: ', buildNumber),
+          _buildTile('Device Unique ID: ', deviceUdId),
           RaisedButton(
             onPressed: () {
               Clipboard.setData(
@@ -129,7 +138,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
                         '${buildLine('Phone Model', phoneModel) + buildLine('Flavor', config.flavorName) + buildLine('App name', config.appName) + buildLine('API URL', config.apiUrl) + buildLine('PackageName', packageName) + buildLine('Version', version) + buildLine('BuildNumber', buildNumber)}'),
               );
             },
-            child: const Text("Copy to clipboard"),
+            child: const Text('Copy to clipboard'),
           ),
         ],
       ),
@@ -147,12 +156,12 @@ class _FlavorBannerState extends State<FlavorBanner> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            key ?? "this value is null",
+            key ?? 'this value is null',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Flexible(
               child: Text(
-            value ?? "this value is null",
+            value ?? 'this value is null',
             maxLines: 5,
             overflow: TextOverflow.ellipsis,
           ))

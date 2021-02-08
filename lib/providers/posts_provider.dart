@@ -1,42 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:provider_starter_app/models/post.dart';
 import 'package:provider_starter_app/network/response.dart';
-import 'package:provider_starter_app/repositories/api_service_repository.dart';
+import 'package:provider_starter_app/services/api_service.dart';
 
 class PostsProvider extends ChangeNotifier {
-  ApiServiceRepository _apiServiceRepository;
-  Response<List<Post>> postsListResponse = Response.none();
-  Response publishPostResponse = Response.none();
+  final ApiService _apiService;
+  NetworkResponse<List<PostModel>> postsListResponse = NetworkResponse.none();
+  NetworkResponse publishPostResponse = NetworkResponse.none();
 
-  PostsProvider(String baseApiUrl) {
-    _apiServiceRepository = ApiServiceRepository(baseApiUrl);
-  }
+  PostsProvider(this._apiService);
 
   Future<void> fetchPosts() async {
-    postsListResponse = Response<List<Post>>.loading("Fetching posts...");
+    postsListResponse = NetworkResponse<List<PostModel>>.loading('Fetching posts...');
     notifyListeners();
     try {
-      final postList = await _apiServiceRepository.fetchPostsData();
-      postsListResponse = Response.completed(postList);
-      notifyListeners();
+      final postList = await _apiService.fetchPostsData();
+      postsListResponse = NetworkResponse.completed(postList);
     } catch (e) {
-      postsListResponse = Response.error(e.toString());
+      postsListResponse = NetworkResponse.error(e.toString());
+      print('fetchPosts error: $e');
+    } finally {
       notifyListeners();
-      print(e);
     }
   }
 
   Future<void> publishPost(String title, String body, int userId) async {
-    publishPostResponse = Response.loading("Publishing post...");
+    publishPostResponse = NetworkResponse.loading('Publishing post...');
     notifyListeners();
     try {
-      final postList = await _apiServiceRepository.publishPostData(body);
-      publishPostResponse = Response.completed(postList);
-      notifyListeners();
+      final postList = await _apiService.publishPostData(body);
+      publishPostResponse = NetworkResponse.completed(postList);
     } catch (e) {
-      publishPostResponse = Response.error(e.toString());
+      publishPostResponse = NetworkResponse.error(e.toString());
+      print('publishPost error: $e');
+    } finally {
       notifyListeners();
-      print(e);
     }
   }
 }

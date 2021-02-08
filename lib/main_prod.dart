@@ -11,7 +11,7 @@ Future<void> main() async {
   final configuredApp = AppConfig(
     appName: 'Flutter Provider Application Starter',
     flavorName: 'prod',
-    apiUrl: 'https://prod.jsonplaceholder.typicode.com',
+    apiUrl: 'prod.jsonplaceholder.typicode.com',
     child: Application(),
   );
 
