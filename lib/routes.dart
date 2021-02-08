@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider_starter_app/screens/home_screen.dart';
 
-const String homeScreenRoute = "/home";
+import 'flavor_banner.dart';
+import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
+
+const String homeScreenRoute = '/home_screen';
+const String splashScreenRoute = '/splash_screen';
 
 Map<String, WidgetBuilder> applicationRoutes = <String, WidgetBuilder>{
-  homeScreenRoute: (context) => HomeScreen(),
+  splashScreenRoute: (context) => SplashScreen(),
+  homeScreenRoute: (context) => FlavorBanner(child: HomeScreen()),
 };

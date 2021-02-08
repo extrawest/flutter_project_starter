@@ -3,29 +3,29 @@ import 'package:provider_starter_app/database/home_dao.dart';
 import 'package:provider_starter_app/models/item_model.dart';
 
 class HomeProvider extends ChangeNotifier {
-  HomeDao homeDao;
+  HomeDao _homeDao;
 
   HomeProvider() {
     _init();
   }
 
   void _init() {
-    homeDao = HomeDao();
+    _homeDao = HomeDao();
   }
 
   Future<void> insertItem(Item item) async {
-    await homeDao.save(item);
+    await _homeDao.save(item);
   }
 
   Future<List<Item>> getAllItems() async {
-    return homeDao.getAll();
+    return _homeDao.getAll();
   }
 
-  Future updateItem(Item item) async {
-    await homeDao.update(item);
+  Future<void> updateItem(Item item) async {
+    await _homeDao.update(item);
   }
 
-  Future deleteItem(Item item) async {
-    await homeDao.delete(item);
+  Future<void> deleteItem(Item item) async {
+    await _homeDao.delete(item);
   }
 }

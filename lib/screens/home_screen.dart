@@ -26,7 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /// We can listen to updates using the following syntax:
     final postsProvider = Provider.of<PostsProvider>(context);
+    /// Or like this:
+    // final postsProvider = context.watch<PostsProvider>();
     return Scaffold(
       appBar: AppBarConfig.defaultAppBar(context, translate(Keys.App_Bar_Title)),
       body: Column(

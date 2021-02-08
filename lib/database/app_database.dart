@@ -15,8 +15,8 @@ class AppDatabase {
 
   AppDatabase._();
 
-  final String testApplicationDatabase = "test_database.db";
-  final String applicationDatabase = "app_database.db";
+  final String testApplicationDatabase = 'test_database.db';
+  final String applicationDatabase = 'app_database.db';
 
   Future<Database> get database async {
     if (_dbOpenCompleter == null) {
