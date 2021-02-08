@@ -21,7 +21,7 @@ ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   backgroundColor: blackShade,
   accentColor: Colors.white,
-  floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.white),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(foregroundColor: Colors.black),
   dividerColor: Colors.black12,
   fontFamily: GoogleFonts.roboto().fontFamily,
   textTheme: TextTheme(
@@ -37,7 +37,7 @@ ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   backgroundColor: greyShadeLight,
   accentColor: Colors.black,
-  floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: Colors.black),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(foregroundColor: Colors.white),
   dividerColor: Colors.white54,
   fontFamily: GoogleFonts.roboto().fontFamily,
   // or use string of the font in the assets 'SFUIDisplay'
