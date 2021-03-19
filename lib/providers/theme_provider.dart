@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider_starter_app/theme/theme.dart';
 
+//todo: add auto read from cache
+//todo: add resolution aware images
 class ThemeProvider extends ChangeNotifier {
   bool isLightTheme;
 
