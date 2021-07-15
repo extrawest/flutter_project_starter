@@ -1,6 +1,12 @@
 # Flutter Provider Application Starter
 
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/extrawest/flutter_web_app/graphs/commit-activity)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
+![Maintaner](https://img.shields.io/badge/maintainer-extrawest.com-blue)
+![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)
+![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)
+
 A new Flutter application starter bundled with Provider package for state management.
 
 
@@ -9,7 +15,7 @@ In order to use this starter in your project, do the following step-by-step:
 
 **1. Clone this repo to your folder:**
 
-`git clone https://gitlab.extrawest.com/andriy.gulak/flutter-provider-application-starter.git`
+`git clone https://github.com/extrawest/flutter_project_starter.git`
 
 **2. Change directory to the previously cloned folder**
 
@@ -25,7 +31,7 @@ In order to use this starter in your project, do the following step-by-step:
 
 **5. Set remote url to your empty repository**
 
-`git remote set-url origin https://gitlab.extrawest.com/user.name/your_empty_repository.git`
+`git remote set-url origin https://github.com/extrawest/flutter_project_starter.git`
 
 **6. Add all files to git**
 
@@ -40,7 +46,7 @@ In order to use this starter in your project, do the following step-by-step:
 `git push -u origin master`
 
 
-## 2. [Change the app name, package name and bundleId (Android & iOS)](https://gitlab.extrawest.com/internal/knowledge-base/-/blob/master/mobile-dev/flutter/tips_and_tricks.md#change-the-app-name-package-name-and-bundleid-android-ios)
+## 2. Change the app name, package name and bundleId (Android & iOS)
 
 ## Implemented Features
 
@@ -53,7 +59,7 @@ In order to use this starter in your project, do the following step-by-step:
     - Automatically save & restore the selected locale
     - Full support for right-to-left locales
     - Fallback locale support in case the system locale is unsupported
-    - Supports both inline or nested JSON      
+    - Supports both inline or nested JSON
 - NOSQL database integration (SEMBAST)
 - Light/Dark theme configuration
 - Dynamic Themes changing using Provider
