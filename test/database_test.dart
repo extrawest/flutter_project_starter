@@ -18,7 +18,7 @@ void defineTests() {
       return ".";
     });
 
-    HomeDao homeDao;
+    late HomeDao homeDao;
 
     setUp(() async {
       homeDao = HomeDao();
@@ -29,8 +29,8 @@ void defineTests() {
       await homeDao.save(item);
       expect(await homeDao.get(1), isNull);
       expect(await homeDao.get(0), isNotNull);
-      expect((await homeDao.get(0)).id, item.id);
-      expect((await homeDao.get(0)).name, item.name);
+      expect((await homeDao.get(0))!.id, item.id);
+      expect((await homeDao.get(0))!.name, item.name);
     });
 
     test('delete', () async {
@@ -45,7 +45,7 @@ void defineTests() {
       expect(await homeDao.get(0), isNotNull);
       await homeDao.update(Item(id: 0, name: "itemNameUpdated"));
       expect(await homeDao.get(0), isNotNull);
-      expect((await homeDao.get(0)).name, "itemNameUpdated");
+      expect((await homeDao.get(0))!.name, "itemNameUpdated");
     });
 
     test('getAll', () async {

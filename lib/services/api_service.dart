@@ -4,7 +4,7 @@ import 'package:provider_starter_app/network/api_client.dart';
 const String postsPath = '/posts';
 
 class ApiService {
-  ApiClient _apiClient;
+  late ApiClient _apiClient;
 
   ApiService(String baseApiUrl) {
     _apiClient = ApiClient(baseApiUrl: baseApiUrl);

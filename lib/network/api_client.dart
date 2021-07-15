@@ -14,12 +14,12 @@ class ApiClient {
 
   var headers = <String, String>{'Content-type': 'application/json'};
 
-  ApiClient({@required this.baseApiUrl});
+  ApiClient({required this.baseApiUrl});
 
   Future<dynamic> get(
     String url, {
-    Map<String, String> addHeaders,
-    Map<String, String> params,
+    Map<String, String>? addHeaders,
+    Map<String, String>? params,
   }) async {
     dynamic responseJson;
     final updatedHeaders = await _setupHeaders(headers);
@@ -39,8 +39,8 @@ class ApiClient {
   Future<dynamic> post(
     String url,
     String jsonBody, {
-    Map<String, String> addHeaders,
-    Map<String, String> params,
+    Map<String, String>? addHeaders,
+    Map<String, String>? params,
   }) async {
     dynamic responseJson;
     final updatedHeaders = await _setupHeaders(headers);
@@ -59,8 +59,8 @@ class ApiClient {
 
   Future<dynamic> put(
     String url, {
-    Map<String, String> headers,
-    Map<String, String> params,
+    Map<String, String>? headers,
+    Map<String, String>? params,
   }) async {
     dynamic responseJson;
     final updatedHeaders = await _setupHeaders(headers);
@@ -76,7 +76,7 @@ class ApiClient {
     return responseJson;
   }
 
-  Uri _buildUrl(String url, {Map<String, String> params}) {
+  Uri _buildUrl(String url, {Map<String, String>? params}) {
     print('baseApiUrl $baseApiUrl');
     Uri uri;
     if (params != null) {
@@ -88,7 +88,7 @@ class ApiClient {
     return uri;
   }
 
-  Future<Map<String, String>> _setupHeaders(Map<String, String> newHeaders) async {
+  Future<Map<String, String>> _setupHeaders(Map<String, String>? newHeaders) async {
     final updatedHeaders = <String, String>{};
 
     updatedHeaders.addAll(headers);

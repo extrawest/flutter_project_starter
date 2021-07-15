@@ -26,7 +26,7 @@ Iterable<E> indexedMap<E, T>(Iterable<T> items, E Function(int index, T item) f)
 }
 
 class ApplicationUtils {
-  static Future<String> getDeviceUdId() async {
+  static Future<String?> getDeviceUdId() async {
     try {
       return await FlutterUdid.udid;
     } on PlatformException catch (e) {

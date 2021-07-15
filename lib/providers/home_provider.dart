@@ -6,9 +6,9 @@ import 'package:provider_starter_app/models/item_model.dart';
 import 'package:sembast/sembast.dart';
 
 class HomeProvider extends ChangeNotifier {
-  HomeDao _homeDao;
+  late HomeDao _homeDao;
   List<Item> _inMemoryItemsList = [];
-  StreamSubscription _dbSubscription;
+  StreamSubscription? _dbSubscription;
 
   HomeProvider() {
     _init();

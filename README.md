@@ -63,9 +63,12 @@ In order to use this starter in your project, do the following step-by-step:
 - Static analysis tool integration (pedantic linter package)
 - Common widgets sharing and reusing example
 
-  
+## TODO
+- Add auto read from cache
+- Add resolution aware images
+
 ---
 Created by @andriy.gulak
-[Extrawest.com](https://www.extrawest.com), 2020
+[Extrawest.com](https://www.extrawest.com), 2021
 ---
 

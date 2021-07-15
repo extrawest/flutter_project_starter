@@ -1,7 +1,7 @@
 class NetworkResponse<T> {
   Status status;
-  T data;
-  String message;
+  T? data;
+  String? message;
 
   NetworkResponse.loading(this.message) : status = Status.loading;
 

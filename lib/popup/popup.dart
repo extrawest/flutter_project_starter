@@ -46,7 +46,7 @@ class PopUp {
                 ],
                 brightness: Theme.of(context).brightness,
               ),
-              resizeToAvoidBottomPadding: false,
+              resizeToAvoidBottomInset: false,
               body: widget,
             ),
           ),

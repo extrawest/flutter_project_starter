@@ -1,6 +1,6 @@
 class Item {
-  String name;
-  int id;
+  String? name;
+  int? id;
 
   Item({
     this.name,
@@ -8,8 +8,8 @@ class Item {
   });
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
-        name: json["name"] as String,
-        id: json["id"] as int,
+        name: json["name"] as String?,
+        id: json["id"] as int?,
       );
 
   Map<String, dynamic> toJson() => {

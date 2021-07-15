@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PopupContent extends StatefulWidget {
-  final Widget content;
+  final Widget? content;
 
   const PopupContent({
-    Key key,
+    Key? key,
     this.content,
   }) : super(key: key);
 

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class PopupLayout extends ModalRoute {
-  double top;
-  double bottom;
-  double left;
-  double right;
-  Color bgColor;
+  double? top;
+  double? bottom;
+  double? left;
+  double? right;
+  Color? bgColor;
   final Widget child;
 
   @override
@@ -22,13 +22,13 @@ class PopupLayout extends ModalRoute {
   Color get barrierColor => bgColor ?? Colors.black.withOpacity(0.5);
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   bool get maintainState => false;
 
   PopupLayout(
-      {Key key, this.bgColor, @required this.child, this.top, this.bottom, this.left, this.right});
+      {Key? key, this.bgColor, required this.child, this.top, this.bottom, this.left, this.right});
 
   @override
   Widget buildPage(
@@ -55,7 +55,7 @@ class PopupLayout extends ModalRoute {
   Widget _buildOverlayContent(BuildContext context) {
     return Container(
       margin:
-          EdgeInsets.only(bottom: bottom, left: left, right: right, top: top),
+          EdgeInsets.only(bottom: bottom!, left: left!, right: right!, top: top!),
       child: child,
     );
   }

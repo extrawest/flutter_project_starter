@@ -12,7 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    SchedulerBinding.instance.addPostFrameCallback((timeStamp) async {
+    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) async {
       Future.delayed(
         Duration(seconds: 2),
         () => Navigator.pushReplacementNamed(context, homeScreenRoute),

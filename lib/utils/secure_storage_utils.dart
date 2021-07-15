@@ -5,7 +5,7 @@ class SecureStorageUtils {
 
   static final storage = FlutterSecureStorage();
 
-  static Future<String> read(String key) async {
+  static Future<String?> read(String key) async {
     return await storage.read(key: key);
   }
 
@@ -30,7 +30,7 @@ class SecureStorageUtils {
     await write(_authTokenKey, value);
   }
 
-  static Future<String> readAuthToken() async {
+  static Future<String?> readAuthToken() async {
     return await read(_authTokenKey);
   }
 }

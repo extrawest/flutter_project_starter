@@ -7,12 +7,12 @@ class TranslatePreferences implements ITranslatePreferences {
   static const String _selectedLocaleKey = 'selected_locale';
 
   @override
-  Future<Locale> getPreferredLocale() async {
+  Future<Locale?> getPreferredLocale() async {
     final preferences = await SharedPreferences.getInstance();
 
     if (!preferences.containsKey(_selectedLocaleKey)) return null;
 
-    final locale = preferences.getString(_selectedLocaleKey);
+    final locale = preferences.getString(_selectedLocaleKey)!;
 
     return localeFromString(locale);
   }

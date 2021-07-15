@@ -5,25 +5,25 @@ import 'package:provider_starter_app/database/dao_api.dart';
 import 'package:provider_starter_app/models/item_model.dart';
 import 'package:sembast/sembast.dart';
 
-class HomeDao implements DaoApi<Item> {
+class HomeDao implements DaoApi<Item?> {
   static const String homeStore = 'home_store';
 
-  final _homeStore = intMapStoreFactory.store(homeStore);
+  final StoreRef<int?, Map<String, Object?>> _homeStore = intMapStoreFactory.store(homeStore);
 
   Future<Database> get _db async => AppDatabase.instance.database;
 
   Future clearArtStore() async {}
 
   @override
-  Future<void> delete(Item model) async {
-    final finder = Finder(filter: Filter.byKey(model.id));
+  Future<void> delete(Item? model) async {
+    final finder = Finder(filter: Filter.byKey(model!.id));
     await _homeStore.delete(await _db, finder: finder);
   }
 
   @override
-  Future<Item> get(int id) async {
+  Future<Item?> get(int id) async {
     final finder = Finder(filter: Filter.byKey(id));
-    final RecordSnapshot recordSnapshot = await _homeStore.findFirst(await _db, finder: finder);
+    final RecordSnapshot? recordSnapshot = await _homeStore.findFirst(await _db, finder: finder);
     return recordSnapshot != null
         ? Item.fromJson(recordSnapshot?.value as Map<String, dynamic>)
         : null;
@@ -31,18 +31,18 @@ class HomeDao implements DaoApi<Item> {
 
   @override
   Future<List<Item>> getAll() async {
-    final recordSnapshots = await _homeStore.find(await _db);
+    final recordSnapshots = await (_homeStore.find(await _db) as FutureOr<List<RecordSnapshot<int, Map<String, Object>>>>);
     return recordSnapshots.map((snapshot) => Item.fromJson(snapshot.value)).toList();
   }
 
   @override
-  Future<void> save(Item model) async {
-    await _homeStore.record(model.id).put(await _db, model.toJson());
+  Future<void> save(Item? model) async {
+    await _homeStore.record(model!.id).put(await _db, model.toJson());
   }
 
   @override
-  Future<void> update(Item model) async {
-    final finder = Finder(filter: Filter.byKey(model.id));
+  Future<void> update(Item? model) async {
+    final finder = Finder(filter: Filter.byKey(model!.id));
     await _homeStore.update(await _db, model.toJson(), finder: finder);
   }
 
@@ -57,7 +57,7 @@ class HomeDao implements DaoApi<Item> {
   Future<StreamSubscription> listenToUpdates(
       Function(List<RecordSnapshot<int, Map<String, dynamic>>>) onDataChanged) async {
     final db = await _db;
-    final query = _homeStore.query();
+    final query = _homeStore.query() as QueryRef<int, Map<String, Object>>;
     final subscription = query.onSnapshots(db).listen((snapshots) {
       // snapshots always contains the list of records matching the query
       onDataChanged(snapshots);

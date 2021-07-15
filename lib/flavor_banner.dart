@@ -13,18 +13,18 @@ import 'package:provider_starter_app/utils/application_utils.dart';
 class FlavorBanner extends StatefulWidget {
   final Widget child;
 
-  const FlavorBanner({@required this.child});
+  const FlavorBanner({required this.child});
 
   @override
   _FlavorBannerState createState() => _FlavorBannerState();
 }
 
 class _FlavorBannerState extends State<FlavorBanner> {
-  String packageName;
-  String version;
-  String buildNumber;
-  String phoneModel;
-  String deviceUdId;
+  String? packageName;
+  String? version;
+  String? buildNumber;
+  String? phoneModel;
+  String? deviceUdId;
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
         this.buildNumber = buildNumber;
       });
 
-      ApplicationUtils.getDeviceUdId().then((String udid) {
+      ApplicationUtils.getDeviceUdId().then((String? udid) {
         setState(() {
           deviceUdId = udid;
         });
@@ -71,7 +71,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
 
   @override
   Widget build(BuildContext context) {
-    final config = AppConfig.of(context);
+    final config = AppConfig.of(context)!;
     return config.flavorName == 'stage' || config.flavorName == 'dev'
         ? Stack(
             children: <Widget>[widget.child, _buildBanner(context, config)],
@@ -80,7 +80,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
   }
 
   Widget _buildBanner(BuildContext context, AppConfig config) {
-    final config = AppConfig.of(context);
+    final config = AppConfig.of(context)!;
     return Positioned(
       bottom: -10,
       left: -10,
@@ -130,7 +130,7 @@ class _FlavorBannerState extends State<FlavorBanner> {
           _buildTile('Version: ', version),
           _buildTile('BuildNumber: ', buildNumber),
           _buildTile('Device Unique ID: ', deviceUdId),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {
               Clipboard.setData(
                 ClipboardData(
@@ -145,11 +145,11 @@ class _FlavorBannerState extends State<FlavorBanner> {
     );
   }
 
-  static String buildLine(String key, String value) {
+  static String buildLine(String key, String? value) {
     return '$key: $value\n';
   }
 
-  Widget _buildTile(String key, String value) {
+  Widget _buildTile(String key, String? value) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: Row(

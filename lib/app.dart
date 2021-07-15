@@ -19,7 +19,7 @@ class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
     final localizationDelegate = LocalizedApp.of(context).delegate;
-    final appConfig = AppConfig.of(context);
+    final appConfig = AppConfig.of(context)!;
     final _apiService = ApiService(appConfig.apiUrl);
 
     return LocalizationProvider(

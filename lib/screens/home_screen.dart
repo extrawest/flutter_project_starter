@@ -9,7 +9,7 @@ import 'package:provider_starter_app/providers/theme_provider.dart';
 import 'package:provider_starter_app/theme/theme.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _buildChangeLangButton(translate(Keys.Language_Ukrainian), 'uk'),
           ]),
           _buildChangeThemeTile(),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {
               postsProvider.fetchPosts();
             },
@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyles.notifierTextLabel.copyWith(color: Theme.of(context).accentColor),
           ),
           Text(
-            _getText(postsProvider),
+            _getText(postsProvider)!,
             textAlign: TextAlign.center,
             style: TextStyles.notifierTextLabel.copyWith(color: Theme.of(context).accentColor),
           ),
@@ -81,8 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  RaisedButton _buildChangeLangButton(String languageName, String languageCode) {
-    return RaisedButton(
+  ElevatedButton _buildChangeLangButton(String languageName, String languageCode) {
+    return ElevatedButton(
       onPressed: () {
         changeLocale(context, languageCode);
       },
@@ -90,13 +90,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  String _getText(PostsProvider postsProvider) {
+  String? _getText(PostsProvider postsProvider) {
     final postsListResponse = postsProvider.postsListResponse;
     switch (postsListResponse.status) {
       case Status.loading:
         return postsListResponse.message;
       case Status.completed:
-        return "${postsListResponse.data.length}";
+        return "${postsListResponse.data!.length}";
       case Status.error:
         return postsListResponse.message;
       case Status.none:
